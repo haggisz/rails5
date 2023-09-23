@@ -20,6 +20,8 @@ services:
       - db
   db:
     image: postgres:12
+    platform: linux/amd64
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
     volumes:
       - 'db-data:/var/lib/postgresql/data'
     environment:
