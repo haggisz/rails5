@@ -1,2 +1,6 @@
-h1 Admin::Users#new
-p Find me in app/views/admin/users/new.html.slim
+h1 ユーザ登録
+
+= form_with model: 「:admin, @user」, local: true do |f|
+  .form_group
+    = f.label :name, "名前"
+    = f.text_field :name, "名前"
