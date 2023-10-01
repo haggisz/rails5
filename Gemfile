@@ -11,7 +11,9 @@ gem "sprockets-rails"
 gem 'slim-rails'
 gem "html2slim", github: "slim-template/html2slim"
 gem "bootstrap-sass"
-
+gem 'rails_autolink'
+gem 'rspec-rails', '~> 6.0'
+gem 'factory_bot_rails', '~> 4.11'
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
@@ -55,6 +57,7 @@ gem "sassc-rails"
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "capybara"
 end
 
 group :development do
