@@ -1,4 +1,5 @@
 - if user.errors.present?
+<<<<<<< HEAD
     ul#error_explanation
       - user.errors.full_messages.each do |message|
         li= message
@@ -12,6 +13,21 @@
     = f.text_field :email, class: 'form-control'
   .form_check
     = f.label :admin, class: 'form-check-label'  do
+=======
+  ul#error_explanation
+    - user.errors.full_messages.each do |message|
+      li = message
+
+= form_with model: [:admin, user], local: true do |f|
+  .form_group
+    = f.label :name, '名前'
+    = f.text_field :name, class: 'form-control'
+  .form_group
+    = f.label :e-mail, 'メールアドレス'
+    = f.text_field :e-mail, class: 'form-control'
+  .form_check
+    = f.label :admin, class: 'form-check-label' do
+>>>>>>> cc6fe40bbfa09f0aa1fa3674b29e0f603a179346
       = f.check_box :admin, class: 'form-check-input'
       | 管理者権限
   .form_group
@@ -22,4 +38,7 @@
     = f.password_field :password_confirmation, class: 'form-control'
 
   = f.submit '登録する', class: 'btn btn-primary'
+<<<<<<< HEAD
   
+=======
+>>>>>>> cc6fe40bbfa09f0aa1fa3674b29e0f603a179346

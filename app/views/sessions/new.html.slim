@@ -1,6 +1,7 @@
 h1 ログイン
 
 = form_with scope: :session, local: true do |f|
+<<<<<<< HEAD
   .form_group
     = f.label :email, 'メールアドレス'
     = f.text_field :email, class: 'form-control', id: 'session_email'
@@ -8,3 +9,15 @@ h1 ログイン
     = f.label :password, 'パスワード'
     = f.password_field :password, class: 'form-control', id: 'session_password'
   = f.submit 'ログインする', class: 'btn btn-primary'
+=======
+  .form-group
+    = f.label :email, 'メールアドレス'
+    = f.text_field :email, class: 'form-control', id: 'session_email'
+
+  .form_group
+    = f.label :password, 'パスワード'
+    = f.password_field :password, class: 'form-control', id: 'session-password'
+  = f.submit 'ログインする', class: 'btn btn-primary'
+
+
+>>>>>>> cc6fe40bbfa09f0aa1fa3674b29e0f603a179346

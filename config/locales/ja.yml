@@ -23,7 +23,11 @@ ja:
         email: メールアドレス
         admin: 管理者権限
         password: パスワード
+<<<<<<< HEAD
         password_confirmation: パスワード（確認）
+=======
+        password_confirmation: パスワード(確認)
+>>>>>>> cc6fe40bbfa09f0aa1fa3674b29e0f603a179346
         created_at: 登録日時
         updated_at: 更新日時
   date:
