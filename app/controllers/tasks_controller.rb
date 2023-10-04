@@ -36,6 +36,11 @@ class TasksController < ApplicationController
     task.destroy
     redirect_to tasks_url, notice: "タスク「#{task.name}」を削除しました"
   end
+
+  def task_logger
+    @task_logger ||= Logger.new('log/task.log', 'daily')
+  end
+
   private
 
   def task_params
@@ -45,4 +50,13 @@ class TasksController < ApplicationController
   def set_task
     @task = current_user.tasks.find(params[:id])
   end
-end 
+end
+
+# tasks_params = if user.premium?
+#   params.require(:task).permit(:name, :description, :special)
+# else
+#   params.require(:task).permit(:name, :description)
+# end
+
+# Task.new(task_params)
+# task_logger.debug 'taskのログを出力'
