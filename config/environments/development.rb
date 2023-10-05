@@ -8,6 +8,11 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
+  config.logger = Logger.new('log/development.log', 'daily')
+
+  config.logger.formatter = proc { |severity, timestamp, progname, message| "#{timestamp} :#{severity}: #{message}\n"
+}
+  config.custom_logger = Logger.new('log/custom.log', 'weekly')
   # Do not eager load code on boot.
   config.eager_load = false
 
@@ -68,3 +73,6 @@ Rails.application.configure do
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 end
+
+# logger.debug 'loggerに出力'
+# Rails.application.config.custom_logger.debug 'custom_loggerに出力'
