@@ -6,9 +6,9 @@ describe 'タスク管理機能', type: :system do
   let!(:task_a) { FactoryBot.create(:task, name: '最初のタスク', user: user_a) }
 
   before do
-    visit login_path
-    fill_in 'メールアドレス', with: login_user.email
-    fill_in 'パスワード', with: login_user.password
+    visit logins_path
+    fill_in 'session[email]', with: logins_user.email
+    fill_in 'session[password]', with: logins_user.password
     click_button 'ログインする'
   end
 
@@ -18,7 +18,7 @@ describe 'タスク管理機能', type: :system do
 
   describe '一覧表示機能' do
     context 'ユーザーAがログインしているとき' do
-      let(:login_user) { user_a }
+      let(:logins_user) { user_a }
 
       it_behaves_like 'ユーザーAが作成したタスクが表示される'
     end
@@ -34,7 +34,7 @@ describe 'タスク管理機能', type: :system do
 
   describe '詳細表示機能' do
     context 'ユーザーAがログインしている時' do
-      let(:login_user) { user_a }
+      let(:logins_user) { user_a }
 
       before do
         visit task_path(task_a)
@@ -45,7 +45,7 @@ describe 'タスク管理機能', type: :system do
   end
 
   describe '新規作成機能' do
-    let(:login_user) { user_a }
+    let(:logins_user) { user_a }
 
     before do
       visit new_task_path
