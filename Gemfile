@@ -14,7 +14,7 @@ gem "bootstrap-sass"
 gem 'rails_autolink'
 gem 'rspec-rails', '~> 6.0'
 gem 'factory_bot_rails', '~> 4.11'
-
+gem 'ransack'
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 
@@ -65,6 +65,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem "mailcatcher"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
