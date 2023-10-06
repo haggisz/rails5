@@ -6,33 +6,13 @@ table.table.table-hover
   tbody
     tr
       th= User.human_attribute_name(:id)
-<<<<<<< HEAD
-      td = @user.id
-    tr
-      th= User.human_attribute_name(:name)
-      td = @user.name
-    tr
-      th= User.human_attribute_name(:email)
-      td = @user.email
-    tr
-      th= User.human_attribute_name(:admin)
-      td = @user.admin? ? 'あり'：'なし'
-    tr
-      th= User.human_attribute_name(:created_at)
-      td = @user.created_at
-    tr
-      th= User.human_attribute_name(:updated_at)
-      td = @user.updated_at
-
-= link_to '編集', edit_admin_user_path, class: 'btn btn-primary mr-3'
-= link_to '削除', [:admin, @user], method: :delete, data: { confirm: "ユーザ「#{user.name}」を削除します。よろしいか"} class: 'btn btn-danger'
-=======
       td= @user.id
     tr
       th= User.human_attribute_name(:name)
       td= @user.name
     tr
       th= User.human_attribute_name(:email)
+      td= @user.email
     tr
       th= User.human_attribute_name(:admin)
       td= @user.admin? ? 'あり' : 'なし'
@@ -45,4 +25,3 @@ table.table.table-hover
 
 = link_to '編集', edit_admin_user_path(user), class: 'btn btn-primary mr-3'
 = link_to '削除', [:admin, @user], method: :delete, data: { confirm: "ユーザ 「#{user.name}」を削除します。よろしいか？"}, class: 'btn btn-danger'
->>>>>>> cc6fe40bbfa09f0aa1fa3674b29e0f603a179346

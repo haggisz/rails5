@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  before_action :require_admin
+before_action :require_admin
 
   def index
     @user = User.all
@@ -42,6 +42,7 @@ class Admin::UsersController < ApplicationController
     @user.destroy
     redirect_to admin_user_url, notice: "ユーザ「#{@user.name}」を削除しました。"
   end
+
   private
 
   def user_params

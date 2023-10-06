@@ -15,6 +15,7 @@ gem 'rails_autolink'
 gem 'rspec-rails', '~> 6.0'
 gem 'factory_bot_rails', '~> 4.11'
 gem 'ransack'
+gem 'kaminari'
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 

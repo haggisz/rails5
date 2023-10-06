@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-h1 ユーザ―一覧
-=======
 h1 ユーザー一覧
->>>>>>> cc6fe40bbfa09f0aa1fa3674b29e0f603a179346
 
 = link_to '新規登録', new_admin_user_path, class: 'btn btn-primary'
 
@@ -15,15 +11,6 @@ table.table.table-hover
       th= User.human_attribute_name(:admin)
       th= User.human_attribute_name(:created_at)
       th= User.human_attribute_name(:updated_at)
-<<<<<<< HEAD
-      th
-  tbody
-    - @users.each do |user|
-      tr
-        td= link_to user.name, [:admin, user]
-        td= user.email
-        td= user.admin? ? 'あり'：'なし'
-=======
 
   tbody
     - @user.each do |user|
@@ -31,13 +18,8 @@ table.table.table-hover
         td= link_to user.name, [:admin, user]
         td= user.email
         td= user.admin? ? "あり" : "なし"
->>>>>>> cc6fe40bbfa09f0aa1fa3674b29e0f603a179346
         td= user.created_at
         td= user.updated_at
         td
           = link_to '編集', edit_admin_user_path(user), class: 'btn btn-primary mr-3'
-<<<<<<< HEAD
-          = link_to '削除', [:admin, user], method: :delete, data: { confirm: "ユーザ「#{user.name}」を削除します。よろしいか"} class: 'btn btn-danger'
-=======
           = link_to '削除', [:admin, user], method: :delete, data: { confirm: "ユーザ 「#{user.name}」を削除します。よろしいか？"}, class: 'btn btn-danger'
->>>>>>> cc6fe40bbfa09f0aa1fa3674b29e0f603a179346

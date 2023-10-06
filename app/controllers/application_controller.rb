@@ -1,9 +1,10 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user
-  before_action :login_required, :set_locale
+  before_action :login_required 
+  before_action :set_locale
 
-  default from : 'app@example.com'
-  layout 'mailer'
+  # default from: 'app@example.com'
+  # layout 'mailer'
   private
 
   def current_user
