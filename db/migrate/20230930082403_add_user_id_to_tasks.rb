@@ -5,6 +5,6 @@ class AddUserIdToTasks < ActiveRecord::Migration[7.0]
   end
 
   def down
-    remove_reference :tasks, :user,  index: true
+    remove_reference :tasks, :user,  index: true, foreign_key: true
   end
 end

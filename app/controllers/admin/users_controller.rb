@@ -21,7 +21,8 @@ before_action :require_admin
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to admin_user_url(@user), notice: "ユーザ「#{@user.name}」を登録"
+      flash[:notice] = "ユーザ「#{@user.name}」を登録"
+      redirect_to admin_user_url(@user)
     else
       render :new
     end
@@ -31,7 +32,8 @@ before_action :require_admin
     @user = User.find(params[:id])
 
     if @user.update(user_params)
-      redirect_to admin_user_url(@user), notice: "ユーザ「#{@user.name}」を更新しました。"
+      flash[:notice] = "ユーザ「#{@user.name}」を更新しました"
+      redirect_to admin_user_url(@user)
     else
       render :edit
     end
@@ -40,7 +42,8 @@ before_action :require_admin
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to admin_user_url, notice: "ユーザ「#{@user.name}」を削除しました。"
+    flash[:notice] = "ユーザ「#{@user.name}」を削除しました"
+    redirect_to admin_user_url
   end
 
   private

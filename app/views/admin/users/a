@@ -1,0 +1,1 @@
+100.times { |i| user.tasks.create!(name: "サンプルタスク#{i}") }

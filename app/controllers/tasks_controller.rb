@@ -3,16 +3,16 @@ class TasksController < ApplicationController
 
   def index
     @q  = current_user.tasks.ransack(params[:q])
-    @tasks = @q.result(distinct: true)
+    @tasks = @q.result(distinct: true).page(params[:page])
 
     respond_to do |format|
       format.html
-  format.csv { send_data @tasks.generate_csv, filename: "tasks-#{Time.zone.now.strftime('%Y%m%d%S')}.csv" }
+      format.csv { send_data @tasks.generate_csv, filename: "tasks-#{Time.zone.now.strftime('%Y%m%d%S')}.csv" }
     end
   end
 
   def show
-    @task = Task.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
   end
 
   def new
@@ -29,26 +29,35 @@ class TasksController < ApplicationController
 
     if @task.save
       TaskMailer.creation_email(@task).deliver_now
-      redirect_to @task, notice: "タスク「#{@task.name}」を登録しました。"
+      flash[:notice] = "タスク「#{@task.name}」を登録しました。"
+      redirect_to @task
     else
       render :new
     end
   end
 
   def edit
-    @task = Task.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
   end
 
   def update
-    task = Task.find(params[:id])
+    task = current_user.tasks.find(params[:id])
     task.update!(task_params)
-    redirect_to tasks_url, notice: "タスク「#{task.name}」を更新しました。"
+    flash[:notice] = "タスク「#{task.name}」を更新しました。"
+    redirect_to tasks_url
   end
 
   def destroy
-    task = Task.find(params[:id])
+    task = current_user.tasks.find(params[:id])
     task.destroy
-    redirect_to tasks_url, notice: "タスク「#{task.name}」を削除しました"
+    flash[:notice] = "タスク「#{task.name}」を削除しました"
+    redirect_to tasks_url
+  end
+
+  def import
+    current_user.tasks.import(params[:file])
+    flash[:notice] = "タスクを追加しました"
+    redirect_to tasks_url
   end
 
   def task_logger
@@ -62,9 +71,10 @@ class TasksController < ApplicationController
 
   def import
     current_user.tasks.import(params[:file])
-    redirect_to tasks_url, notice: "タスクを追加しました"
+    flash[:notice] = "タスクを追加しました"
+    redirect_to tasks_url
   end
-  
+
   private
 
   def task_params
