@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user
+  before_action :current_user
   before_action :login_required
   before_action :set_locale
 
@@ -16,6 +17,8 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
-    I18n.locale = current_user&.locale || :ja
+    I18n.locale = current_user&.locale || I18n.default_locale
   end
 end
+
+

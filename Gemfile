@@ -16,6 +16,7 @@ gem 'rspec-rails', '~> 6.0'
 gem 'factory_bot_rails', '~> 4.11'
 gem 'ransack'
 gem 'kaminari'
+gem 'rails-i18n', '~> 7.0', '>= 7.0.8'
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 
