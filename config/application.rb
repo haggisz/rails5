@@ -1,7 +1,7 @@
 require_relative "boot"
 
 require 'csv'
-require "rails"
+require "rails/all"
 # Pick the frameworks you want:
 require "active_model/railtie"
 require "active_job/railtie"
@@ -34,15 +34,5 @@ module App
 
     # Don't generate system test files.
     config.generators.system_tests = nil
-
-    # Where the I18n library should search for translation files
-    I18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
-
-    #アプリケーションで有効とする言語を指定
-    I18n.available_locales = :ja
-
-    #デフォルトの言語を指定
-    I18n.default_locale = :ja
-
   end
 end

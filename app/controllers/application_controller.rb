@@ -1,8 +1,7 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user
-  before_action :current_user
   before_action :login_required
-  before_action :set_locale
+  around_action :switch_locale
 
   # default from: 'app@example.com'
   # layout 'mailer'
@@ -16,9 +15,8 @@ class ApplicationController < ActionController::Base
     redirect_to logins_url unless current_user
   end
 
-  def set_locale
-    I18n.locale = current_user&.locale || I18n.default_locale
+  def switch_locale(&action)
+    locale = current_user.try(:locale) || I18n.default_locale
+    I18n.with_locale(locale, &action)
   end
 end
-
-

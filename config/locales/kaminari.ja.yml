@@ -6,7 +6,6 @@ ja:
       previous: "&lsaquo; 前"
       previous: "次 &rsaquo;"
       truncate: "&hellip;"
-
   helpers:
     page_entries_info:
       one_page:
@@ -16,5 +15,3 @@ ja:
           other: "%{count}件の%{entry_name}が表示されています"
       more_pages:
         display_entries: "全%{total}件中 %{first}&nbsp;-&nbsp;%{last}件の%{entry_name}が表示されています"
-
-
